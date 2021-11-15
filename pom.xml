@@ -43,17 +43,18 @@
 		</dependency>
 		
 	<!--	<dependency>
-			<groupId>org.springframework.boot</groupId>
+			<groupId>.boot</groupId>
 			<artifactId>spring-boot-starter-security</artifactId>
 		</dependency>-->
-		<dependency>
-        <groupId>org.springframework.security</groupId>
-        <artifactId>spring-security-web</artifactId>
-    </dependency>
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
 			<optional>true</optional>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
 		</dependency>
 	</dependencies>
 	

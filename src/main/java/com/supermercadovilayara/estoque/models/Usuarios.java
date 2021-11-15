@@ -12,7 +12,7 @@ import javax.persistence.*;
 public class Usuarios{
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
 	@Column(unique = true)
 	private String nomeUsuario;
@@ -23,4 +23,6 @@ public class Usuarios{
 	private String sobrenome;
 	private String funcao;
 
+
+	
 }

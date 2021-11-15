@@ -8,44 +8,30 @@ import com.supermercadovilayara.estoque.repositories.UsuariosRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 
 @RestController()
 
 @RequestMapping(value = "/estoque")
 public class UsuariosController{
-	UsuariosRepository usuariosRepository;
+
+	private final UsuariosRepository usuariosRepository;
 	private final PasswordEncoder encoder;
 
-	public void UsuarioController(UsuariosRepository usuariosrepository, PasswordEncoder encoder) {
-			this.usuariosRepository = usuariosrepository;
-			this.encoder = encoder;
+	public UsuariosController(UsuariosRepository usuariosRepository, PasswordEncoder encoder) {
+		this.usuariosRepository = usuariosRepository;
+		this.encoder = encoder;
 	}
 
+	@GetMapping("/Listar/usuarios")
+	public ResponseEntity<List<Usuarios>> listarTodosUsuarios(){
+		return ResponseEntity.ok(usuariosRepository.findAll());
+	}
 	@PostMapping("/cadastrar/usuario")
 	public ResponseEntity<Usuarios> salvarUsuarios(@RequestBody Usuarios usuario) {
-		usuario.setPassword(encoder.encode(usuario.getPassword()));
+		usuario.setSenha(encoder.encode(usuario.getSenha()));
   	return ResponseEntity.ok(usuariosRepository.save(usuario));
-	}
-	@GetMapping("/usuarios") 
-	public ResponseEntity<List<Usuarios>> ListaTodosUsuarios() {
-		return ResponseEntity.ok(usuariosRepository.findAll());
-
-	}
-
-	@PutMapping("/usuarios/{id}")
-	public Usuarios atualizaUsuario(@RequestBody Usuarios usuario) {
-		return usuariosRepository.save(usuario);
-	 
-	}
-	@DeleteMapping("/usuario")
-	public void deletaUsuario(@RequestBody Usuarios usuario) {
-		usuariosRepository.delete(usuario);
 	}
 	@GetMapping("/validarSenha")
 	public ResponseEntity<Boolean> validarSenha(@RequestParam String nomeUsuario,
@@ -57,11 +43,20 @@ public class UsuariosController{
 			}
 
 			Usuarios usuario = optUsuario.get();
-			boolean valid = encoder.matches(password, usuario.getPassword());
+			boolean valid = encoder.matches(senha, usuario.getSenha());
 
 			HttpStatus status = (valid) ? HttpStatus.OK : HttpStatus.UNAUTHORIZED;
 			return ResponseEntity.status(status).body(valid);
 
+	}	
+	@PutMapping("/usuarios/{id}")
+	public ResponseEntity<Usuarios> atualizaUsuario(@RequestBody Usuarios usuario) {
+		return ResponseEntity.ok(usuariosRepository.save(usuario));
+	 
+	}
+	@DeleteMapping("/usuario")
+	public void deletaUsuario(@RequestBody Usuarios usuario) {
+		usuariosRepository.delete(usuario);
 	}
 
 }

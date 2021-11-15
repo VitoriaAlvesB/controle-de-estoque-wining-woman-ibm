@@ -4,40 +4,33 @@ import java.util.List;
 import com.supermercadovilayara.estoque.models.Produtos;
 import com.supermercadovilayara.estoque.repositories.ProdutosRepository;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 
 @RestController()
 
 @RequestMapping(value = "/estoque")
-public class ProdutosController {
-	@Autowired
+public class ProdutosController{
 
 	ProdutosRepository produtosRepository;
 
-	@PostMapping("/produtos")
-	public void salvarProdutos(@RequestBody Produtos produto) {
-  	produtosRepository.save(produto);
+	@PostMapping("/cadastrar/produtos")
+	public ResponseEntity<Produtos> salvarProdutos(@RequestBody Produtos produto) {
+  	 return ResponseEntity.ok(produtosRepository.save(produto));
 	}
 	@GetMapping("/produtos") 
-	public List<Produtos> ListaTodosProdutos() {
-		return produtosRepository.findAll();
+	public ResponseEntity<List<Produtos>> ListarTodosProdutos() {
+		return ResponseEntity.ok(produtosRepository.findAll());
 
 	}
 	@PutMapping("/produtos/{id}")
-	public Produtos atualizaProduto(@RequestBody Produtos produto) {
-		return produtosRepository.save(produto);
+	public ResponseEntity<Produtos> atualizarProduto(@RequestBody Produtos produto){
+		return ResponseEntity.ok(produtosRepository.save(produto));
 	 
 	}
 	@DeleteMapping("/produto")
-	public void deletaProduto(@RequestBody Produtos produto) {
+	public void deletaProduto(@RequestBody Produtos produto){
 		produtosRepository.delete(produto);
 	}
 }
