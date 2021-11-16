@@ -1,6 +1,8 @@
 package com.supermercadovilayara.estoque.controllers;
 import java.util.List;
 
+import javax.validation.Valid;
+
 import com.supermercadovilayara.estoque.models.Produtos;
 import com.supermercadovilayara.estoque.repositories.ProdutosRepository;
 
@@ -16,7 +18,7 @@ public class ProdutosController{
 	ProdutosRepository produtosRepository;
 
 	@PostMapping("/cadastrar/produtos")
-	public ResponseEntity<Produtos> salvarProdutos(@RequestBody Produtos produto) {
+	public ResponseEntity<Produtos> salvarProdutos(@RequestBody  @Valid Produtos produto) {
   	 return ResponseEntity.ok(produtosRepository.save(produto));
 	}
 	@GetMapping("/produtos") 

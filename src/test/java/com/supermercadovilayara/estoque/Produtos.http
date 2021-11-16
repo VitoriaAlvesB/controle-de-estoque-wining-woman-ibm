@@ -1,10 +1,10 @@
-POST http://localhost:8080/estoque/cadastrar/produtos
+POST http://localhost:8080/tabela/cadastrar/produtos
 Content-Type: application/json
 
 {
-    "nome":"Arroz",
-    "categoria":"alimenticio",
-    "descricao":"saco de arroz de 5Kg",
-	  "quantidade":6, 
-    "preco_unitario": 15.50
+ "nome":"arroz",
+ "categoria":"alimenticio",
+ "descricao" :"saco de arroz de 5kg",
+ "quantidade":5,
+ "preco_unitario": 15.50
 }

@@ -1,13 +1,16 @@
 package com.supermercadovilayara.estoque.controllers;
 import java.util.List;
 import java.util.Optional;
+import javax.validation.Valid;
 
 import com.supermercadovilayara.estoque.models.Usuarios;
 import com.supermercadovilayara.estoque.repositories.UsuariosRepository;
 
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
+
 import org.springframework.web.bind.annotation.*;
 
 
@@ -29,7 +32,7 @@ public class UsuariosController{
 		return ResponseEntity.ok(usuariosRepository.findAll());
 	}
 	@PostMapping("/cadastrar/usuario")
-	public ResponseEntity<Usuarios> salvarUsuarios(@RequestBody Usuarios usuario) {
+	public ResponseEntity<Usuarios> salvarUsuarios(@RequestBody @Valid Usuarios usuario) {
 		usuario.setSenha(encoder.encode(usuario.getSenha()));
   	return ResponseEntity.ok(usuariosRepository.save(usuario));
 	}
