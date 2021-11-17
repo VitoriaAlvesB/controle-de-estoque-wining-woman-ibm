@@ -1,6 +1,4 @@
 package com.supermercadovilayara.estoque.controllers;
-import java.util.List;
-import java.util.Optional;
 import javax.validation.Valid;
 
 import com.supermercadovilayara.estoque.models.Usuarios;
@@ -28,7 +26,7 @@ public class UsuariosController{
 	}
 
 	@GetMapping("/Listar/usuarios")
-	public ResponseEntity<List<Usuarios>> listarTodosUsuarios(){
+	public ResponseEntity<Iterable<Usuarios>> listarTodosUsuarios(){
 		return ResponseEntity.ok(usuariosRepository.findAll());
 	}
 	@PostMapping("/cadastrar/usuario")
@@ -40,7 +38,7 @@ public class UsuariosController{
 	public ResponseEntity<Boolean> validarSenha(@RequestParam String nomeUsuario,
 																							@RequestParam String senha) {
 
-			Optional<Usuarios> optUsuario = usuariosRepository.findByNomeUsuario(nomeUsuario);
+			Usuarios optUsuario = usuariosRepository.findByNomeUsuario(nomeUsuario);
 			if (optUsuario.isEmpty()) {
 					return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(false);
 			}
@@ -62,4 +60,5 @@ public class UsuariosController{
 		usuariosRepository.delete(usuario);
 	}
 
+	//get e post role table
 }

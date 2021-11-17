@@ -50,7 +50,7 @@
 		</dependency>
 		
 	<!--<deendency>
-			<groupId>.boot</groupId>
+			<groupId>boot</groupId>
 			<artifactId>spring-boot-starter-security</artifactId>
 		</dependency>-->
 		<dependency>
