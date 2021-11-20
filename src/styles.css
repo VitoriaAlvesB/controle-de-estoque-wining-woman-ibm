@@ -1,1 +1,21 @@
 /* You can add global styles to this file, and also import other style files */
+
+body {
+    background-image: url("/assets/fundo-estoque2.png");
+}
+
+    #boxInterno {
+    left:50%;
+    top:50%;
+    margin-left:-200px; /* Metade do valor da Largura */
+    margin-top:-100px; /* Metade da valor da Altura */
+    position:absolute;
+    width:400px; /* Valor da Largura */
+    height:200px; /* Valor da Altura */
+    border: 1px #000 solid;
+    }
+    
+
+
+
+
