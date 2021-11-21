@@ -19,12 +19,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 	@Override
 	protected void configure(HttpSecurity http) throws Exception{
 		http.csrf().disable().authorizeRequests()
-		.antMatchers(HttpMethod.GET, "/estoque").permitAll()
+		.antMatchers(HttpMethod.GET, "/usuarios").permitAll()
     .antMatchers(HttpMethod.GET, "/validarSenha").permitAll()
-		.antMatchers(HttpMethod.DELETE, "/usuario").hasRole("ADMIN")
-		.antMatchers(HttpMethod.POST, "/cadastrar/usuario").hasRole("ADMIN")
-		.anyRequest().authenticated()
-		.and().formLogin().permitAll()
+		.antMatchers(HttpMethod.DELETE, "/teste").hasRole("ADMIN")
+		.antMatchers(HttpMethod.POST, "/cadastrar/usuario").permitAll()
+		//.anyRequest().authenticated()
+		//.and().formLogin().permitAll()
 		.and().logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout"));
 	}
 	

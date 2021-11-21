@@ -9,14 +9,10 @@ import com.supermercadovilayara.estoque.repositories.ProdutosRepository;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+public class RoleController {
+  private final	ProdutosRepository produtosRepository;
 
-@RestController()
-@RequestMapping(value = "/estoque")
-public class ProdutosController{
-
-	private final	ProdutosRepository produtosRepository;
-
-	public ProdutosController(ProdutosRepository produtosRepository) {
+	public RoleController(ProdutosRepository produtosRepository) {
 		this.produtosRepository = produtosRepository;
 	}
 
@@ -40,3 +36,4 @@ public class ProdutosController{
 		produtosRepository.delete(produto);
 	}
 }
+

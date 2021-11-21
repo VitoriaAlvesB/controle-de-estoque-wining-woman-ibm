@@ -1,4 +1,5 @@
 package com.supermercadovilayara.estoque.controllers;
+
 import javax.validation.Valid;
 
 import com.supermercadovilayara.estoque.models.Usuarios;
@@ -14,7 +15,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController()
 
-@RequestMapping(value = "/estoque")
+@RequestMapping(value = "/usuarios")
 public class UsuariosController{
 
 	private final UsuariosRepository usuariosRepository;
@@ -51,7 +52,7 @@ public class UsuariosController{
 
 	}	
 	@PutMapping("/usuarios/{id}")
-	public ResponseEntity<Usuarios> atualizaUsuario(@RequestBody Usuarios usuario) {
+	public ResponseEntity<Usuarios> atualizaUsuario(@RequestBody @Valid Usuarios usuario) {
 		return ResponseEntity.ok(usuariosRepository.save(usuario));
 	 
 	}

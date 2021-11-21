@@ -7,6 +7,7 @@ import javax.persistence.*;
 import javax.validation.constraints.*;
 
 
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -14,20 +15,18 @@ import javax.validation.constraints.*;
 public class Produtos{
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.AUTO, generator="seq")
+
 	private Integer id;
 
 	@Column(unique = true)
 	@NotBlank
-	@NotNull
 	private String nome;
 
 	@NotBlank
-	@NotNull
 	private String categoria;
 
 	@NotBlank
-	@NotNull
 	private String descricao ;
 
 
@@ -36,5 +35,4 @@ public class Produtos{
 
 	private float preco_unitario;
 
-	
 }

@@ -2,6 +2,7 @@ package com.supermercadovilayara.estoque.models;
 
 import java.util.*;
 import javax.persistence.*;
+import javax.validation.constraints.*;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -17,15 +18,28 @@ import lombok.NoArgsConstructor;
 public class Usuarios implements UserDetails {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.AUTO, generator="seq")
 	private Integer id;
 	
 	@Column(unique = true)
+	@NotBlank
 	private String nomeUsuario;
+
+	@NotBlank(message = "senha.not.blank")
+	@Size(min = 5)
 	private String senha;
-	private String email ;
+
+	@NotBlank(message = "email.not.blank")
+	@Email(message = "email.not.valid")
+	private String email;
+
+	@NotBlank(message = "dataadicionado.not.blank")
 	private String dataAdicionado;
+
+	@NotBlank(message = "nome.not.blank")
 	private String nome;
+
+	@NotBlank(message = "sobrenome.not.blank")
 	private String sobrenome;
 		
 	@ManyToMany
@@ -36,14 +50,6 @@ public class Usuarios implements UserDetails {
 	   inverseJoinColumns = @JoinColumn(
 	   name = "role_id", referencedColumnName = "nomeRole")) 
     private List<Role> roles;
-
-	/*public List<Role> getRoles() {
-		return roles;
-	}
-
-	public void setRoles(List<Role> roles) {
-		this.roles = roles;
-	}*/
 
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -81,7 +87,7 @@ public class Usuarios implements UserDetails {
 	}
 
 	public boolean isEmpty() {
-		return true;
+		return false;
 	}
 
   public Usuarios get() {
