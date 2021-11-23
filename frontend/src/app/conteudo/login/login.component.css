@@ -1,0 +1,12 @@
+.container{
+  display: flex;
+  flex-direction: column;
+  width: 350px;
+}
+.button{
+  width: 15rem;
+  margin: 20px auto;
+}
+.input{
+  padding: 20px;
+}
