@@ -1,0 +1,65 @@
+table {
+  width: 100%;
+}
+
+.formulario-pesquisa{
+  margin-top: 5px;
+  display: flex;
+  justify-content: left;
+  margin-left: 50px;
+  height: 150px;
+}
+
+.botao-pesquisar{
+  position: absolute;
+  margin-top: 50px;
+  left: 500px;
+  background-color: grey;
+  height: 24px;
+}
+
+.btn-cadastrar{
+  position: absolute;
+  left: 400px;
+  margin-top: 40px;
+  background-color: green;
+  height: 30px;
+  width: 100px;
+  text-align: center;
+
+}
+
+#titulo-pesquisa{
+  position: absolute;
+  margin-top: 25px;
+  left: 50px;
+}
+
+#usuary-search{
+  position: absolute;
+  margin-top: 50px;
+  left: 50px;
+  width: 400px;
+}
+
+#editar{
+ position: absolute;
+ right: 80px;
+}
+
+#excluir{
+  position: absolute;
+  right: 50px;
+}
+
+#pesquisar{
+  position: absolute;
+  left: 60px;
+  margin-top: 50px;
+}
+
+.form-group{
+  width: 400px;
+  left: 200px;
+  margin-left: 400px;
+}

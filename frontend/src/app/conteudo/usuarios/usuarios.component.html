@@ -1,0 +1,95 @@
+<mat-form-field class="formulario-pesquisa">
+  <label for="usuary-search" id="titulo-pesquisa">Nome do Usuário</label>
+  <input type="search" id="usuary-search">
+  <span class="material-icons" id="pesquisar">search</span>
+  <button class="botao-pesquisar">Pesquisar</button>
+  </mat-form-field>
+
+  <mat-card>
+    <mat-toolbar color="primary">Lista de usuários</mat-toolbar>
+
+    <table mat-table [dataSource]="usuarios" class="mat-elevation-z8">
+
+    <!-- Name Column -->
+      <ng-container matColumnDef="nome">
+        <th mat-header-cell *matHeaderCellDef> Nome </th>
+        <td mat-cell *matCellDef="let usuario"> {{ usuario.nome }} </td>
+      </ng-container>
+
+    <!-- Sobrenome Column -->
+      <ng-container matColumnDef="sobrenome">
+        <th mat-header-cell *matHeaderCellDef> Sobrenome </th>
+        <td mat-cell *matCellDef="let usuario"> {{ usuario.sobrenome }} </td>
+      </ng-container>
+
+    <!-- Senha Column -->
+      <ng-container matColumnDef="senha">
+        <th mat-header-cell *matHeaderCellDef> Senha </th>
+        <td mat-cell *matCellDef="let usuario"> {{ usuario.senha }} </td>
+      </ng-container>
+
+    <!-- E-mail Column -->
+      <ng-container matColumnDef="email">
+        <th mat-header-cell *matHeaderCellDef> E-mail </th>
+        <td mat-cell *matCellDef="let usuario"> {{ usuario.email }} </td>
+      </ng-container>
+
+    <!-- Função Column -->
+      <ng-container matColumnDef="funcao">
+        <th mat-header-cell *matHeaderCellDef> Função </th>
+        <td mat-cell *matCellDef="let usuario"> {{ usuario.funcao }}
+          <span class="material-icons" id="editar">mode_edit</span>
+          <span class="material-icons" id="excluir">delete</span></td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+    </table>
+  </mat-card>
+
+  <form #f="ngForm" (ngSubmit)="onSubmit(f)">
+    <div class="form-group">
+      <label for="nome">Nome</label>
+      <input type="text" class="form-control" name="nome"
+      id="nome" placeholder="Nome" [(ngModel)]="usuario.nome"
+      required #nome="ngModel">
+    </div>
+
+    <div class="form-group">
+      <label for="sobrenome">Sobrenome</label>
+      <input type="text" class="form-control" name="sobrenome"
+      id="sobrenome" placeholder="Sobrenome" [(ngModel)]="usuario.sobrenome"
+      required >
+    </div>
+
+    <div class="form-group">
+      <label for="email">E-mail</label>
+      <input type="email" class="form-control" name="email"
+      id="email" placeholder="nome@email.com" [(ngModel)]="usuario.email"
+      required email>
+    </div>
+
+    <div class="form-group">
+      <label for="senha">Senha</label>
+      <input type="password" class="form-control" name="senha"
+      id="senha" placeholder="Senha" [(ngModel)]="usuario.senha"
+      required >
+    </div>
+
+    <div class="form-group">
+      <label for="funcao">Função</label>
+      <input type="text" class="form-control" name="funcao"
+      id="funcao" placeholder="Função" [(ngModel)]="usuario.funcao"
+      required >
+      <select class="form-control">
+        <option>Admin</option>
+        <option>User</option>
+      </select>
+    </div>
+
+    <div>
+      <button type="submit" class="btn-cadastrar" [disabled]="!f.valid">CADASTRAR</button>
+    </div>
+
+  </form>
