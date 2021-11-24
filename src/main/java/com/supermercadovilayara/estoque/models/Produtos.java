@@ -4,6 +4,9 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import javax.validation.constraints.*;
+
+
 
 @Data
 @NoArgsConstructor
@@ -12,14 +15,24 @@ import javax.persistence.*;
 public class Produtos{
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.AUTO, generator="seq")
+
 	private Integer id;
+
 	@Column(unique = true)
+	@NotBlank
 	private String nome;
+
+	@NotBlank
 	private String categoria;
+
+	@NotBlank
 	private String descricao ;
+
+
 	private Integer quantidade;
+
+
 	private float preco_unitario;
 
-	
 }

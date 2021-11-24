@@ -1,6 +1,8 @@
 package com.supermercadovilayara.estoque.controllers;
 import java.util.List;
 
+import javax.validation.Valid;
+
 import com.supermercadovilayara.estoque.models.Produtos;
 import com.supermercadovilayara.estoque.repositories.ProdutosRepository;
 
@@ -9,14 +11,18 @@ import org.springframework.web.bind.annotation.*;
 
 
 @RestController()
-
 @RequestMapping(value = "/estoque")
 public class ProdutosController{
 
-	ProdutosRepository produtosRepository;
+	private final	ProdutosRepository produtosRepository;
+
+	public ProdutosController(ProdutosRepository produtosRepository) {
+		this.produtosRepository = produtosRepository;
+	}
+
 
 	@PostMapping("/cadastrar/produtos")
-	public ResponseEntity<Produtos> salvarProdutos(@RequestBody Produtos produto) {
+	public ResponseEntity<Produtos> salvarProdutos(@RequestBody  @Valid Produtos produto) {
   	 return ResponseEntity.ok(produtosRepository.save(produto));
 	}
 	@GetMapping("/produtos") 
@@ -25,7 +31,7 @@ public class ProdutosController{
 
 	}
 	@PutMapping("/produtos/{id}")
-	public ResponseEntity<Produtos> atualizarProduto(@RequestBody Produtos produto){
+	public ResponseEntity<Produtos> atualizarProduto(@RequestBody @Valid Produtos produto){
 		return ResponseEntity.ok(produtosRepository.save(produto));
 	 
 	}
