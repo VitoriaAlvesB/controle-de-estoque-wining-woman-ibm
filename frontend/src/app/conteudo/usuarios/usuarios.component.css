@@ -13,14 +13,14 @@ table {
 .botao-pesquisar{
   position: absolute;
   margin-top: 50px;
-  left: 240px;
+  left: 500px;
   background-color: grey;
   height: 24px;
 }
 
-.button-novo-usuario{
+.btn-cadastrar{
   position: absolute;
-  right: 40px;
+  left: 400px;
   margin-top: 40px;
   background-color: green;
   height: 30px;
@@ -39,6 +39,7 @@ table {
   position: absolute;
   margin-top: 50px;
   left: 50px;
+  width: 400px;
 }
 
 #editar{
@@ -55,4 +56,10 @@ table {
   position: absolute;
   left: 60px;
   margin-top: 50px;
+}
+
+.form-group{
+  width: 400px;
+  left: 200px;
+  margin-left: 400px;
 }

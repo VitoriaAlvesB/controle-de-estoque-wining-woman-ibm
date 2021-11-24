@@ -48,6 +48,48 @@
     </table>
   </mat-card>
 
-    <div>
-      <button class="button-novo-usuario">Novo Usuário</button>
+  <form #f="ngForm" (ngSubmit)="onSubmit(f)">
+    <div class="form-group">
+      <label for="nome">Nome</label>
+      <input type="text" class="form-control" name="nome"
+      id="nome" placeholder="Nome" [(ngModel)]="usuario.nome"
+      required #nome="ngModel">
     </div>
+
+    <div class="form-group">
+      <label for="sobrenome">Sobrenome</label>
+      <input type="text" class="form-control" name="sobrenome"
+      id="sobrenome" placeholder="Sobrenome" [(ngModel)]="usuario.sobrenome"
+      required >
+    </div>
+
+    <div class="form-group">
+      <label for="email">E-mail</label>
+      <input type="email" class="form-control" name="email"
+      id="email" placeholder="nome@email.com" [(ngModel)]="usuario.email"
+      required email>
+    </div>
+
+    <div class="form-group">
+      <label for="senha">Senha</label>
+      <input type="password" class="form-control" name="senha"
+      id="senha" placeholder="Senha" [(ngModel)]="usuario.senha"
+      required >
+    </div>
+
+    <div class="form-group">
+      <label for="funcao">Função</label>
+      <input type="text" class="form-control" name="funcao"
+      id="funcao" placeholder="Função" [(ngModel)]="usuario.funcao"
+      required >
+      <select class="form-control">
+        <option>Admin</option>
+        <option>User</option>
+      </select>
+    </div>
+
+    <div>
+      <button type="submit" class="btn-cadastrar" [disabled]="!f.valid">CADASTRAR</button>
+    </div>
+
+  </form>
