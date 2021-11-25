@@ -17,6 +17,9 @@ que Madeus precisa para seu sistema.
 
 1. Faça o download do arquivo estoque.jar
 2. Execulte ele em sua maquina.
+3. se solicitar login use 
+4. Nome de usuario : MadeusAdmin
+5. senha: 123456
 
 ## Na aplicação desenvolvida é possível(backend):
 
