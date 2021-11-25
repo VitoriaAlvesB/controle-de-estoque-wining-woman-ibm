@@ -1,1 +1,20 @@
-<p>produtos works!</p>
+<div class="container" style = 'text-align: right'>
+
+   <form>
+      <input type="text" th:name = "nome" th:value= "${Produto.nome}">
+    </form>
+      
+    <table class="table table-bordered">
+      <tr>
+        <th>NOME</th>
+        <th>CATEGORIA</th>
+        <th>DESCRIÇÂO</th>
+        <th>QUANTIDADE</th>
+        <th>PREÇO UNITÁRIO</th>
+        <th width="220px">AÇÃO</th>
+      </tr>
+  
+    </table>
+
+    <a href="#" class="btn btn-success">Adicionar novo Produto</a>
+ </div>

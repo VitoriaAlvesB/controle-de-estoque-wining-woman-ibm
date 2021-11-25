@@ -1,0 +1,10 @@
+#boxInterno {
+    left:50%;
+    top:50%;
+    margin-left:-200px; /* Metade do valor da Largura */
+    margin-top:-100px; /* Metade da valor da Altura */
+    position:absolute;
+    width:600px; /* Valor da Largura */
+    height:200px; /* Valor da Altura */
+    font-weight: bold;
+    }
