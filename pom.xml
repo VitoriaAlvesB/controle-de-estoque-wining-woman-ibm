@@ -65,11 +65,20 @@
 		</dependency>
 	</dependencies>
 	<build>
+		<finalName>estoque</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jar-plugin</artifactId>                    
+				<version>3.2.0</version>
+				<configuration>
+						<outputDirectory>C:\Users\Pass\Desktop\vilayara\estoque</outputDirectory>
+				</configuration>
+		</plugin>
 		</plugins>
 	</build>
 </project>
