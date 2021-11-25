@@ -15,7 +15,7 @@ import javax.validation.constraints.*;
 public class Produtos{
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO, generator="seq")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 
 	private Integer id;
 

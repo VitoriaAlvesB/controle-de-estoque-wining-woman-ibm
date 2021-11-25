@@ -15,10 +15,10 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity(name="Usuarios")
-public class Usuarios implements UserDetails {
+public class Usuarios implements UserDetails{
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO, generator="seq")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	
 	@Column(unique = true)
@@ -41,15 +41,18 @@ public class Usuarios implements UserDetails {
 
 	@NotBlank(message = "sobrenome.not.blank")
 	private String sobrenome;
+
+	//@NotBlank
+	//private String role;
 		
-	@ManyToMany
+	@ManyToMany(cascade=CascadeType.MERGE)
 	@JoinTable( 
 	   name = "usuarios_roles", 
 	   joinColumns = @JoinColumn(
 	   name = "usuario_id", referencedColumnName = "id"), 
 	   inverseJoinColumns = @JoinColumn(
 	   name = "role_id", referencedColumnName = "nomeRole")) 
-    private List<Role> roles;
+		 private List<Role> roles;
 
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -79,20 +82,11 @@ public class Usuarios implements UserDetails {
 	@Override
 	public String getPassword() {
 		return this.senha;
-	}
-
+	}	
 	@Override
 	public String getUsername() {
 		return this.nomeUsuario;
 	}
-
-	public boolean isEmpty() {
-		return false;
-	}
-
-  public Usuarios get() {
-    return null;
-  }
 
 }
 /** insert into usuarios_roles(usuario_id, role_id)
