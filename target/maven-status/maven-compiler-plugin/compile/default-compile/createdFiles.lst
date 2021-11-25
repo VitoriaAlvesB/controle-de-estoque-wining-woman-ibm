@@ -1,0 +1,10 @@
+com\supermercadovilayara\estoque\security\ImplementsUserDetailsService.class
+com\supermercadovilayara\estoque\EstoqueApplication.class
+com\supermercadovilayara\estoque\repositories\ProdutosRepository.class
+com\supermercadovilayara\estoque\controllers\ProdutosController.class
+com\supermercadovilayara\estoque\security\WebSecurityConfig.class
+com\supermercadovilayara\estoque\models\Role.class
+com\supermercadovilayara\estoque\models\Usuarios.class
+com\supermercadovilayara\estoque\controllers\UsuariosController.class
+com\supermercadovilayara\estoque\repositories\UsuariosRepository.class
+com\supermercadovilayara\estoque\models\Produtos.class
